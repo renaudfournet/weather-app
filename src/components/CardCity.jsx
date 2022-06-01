@@ -312,25 +312,22 @@ let codeWeather = [
 
 export default function CardCity(props) {
   let index = codeWeather.findIndex(item => item.code === props.code)
-  console.log('CODE', index)
+  // console.log('CODE', index)
 
   let currentHour = props.hour.split('')[11] + props.hour.split('')[12]
-  // console.log(currentHour)
+  const regex = currentHour.replace(':', '')
+  console.log('REGEX', currentHour.replace(':', ''))
   return (
     <>
       <div
         class={`flex items-center justify-between w-1/3 h-32 rounded-lg text-white-100 bg-${
-          currentHour < 21 && currentHour > 7 ? 'blue-600' : 'black-200'
+          regex < 21 && regex > 6 ? 'blue-600' : 'black-200'
         } mx-10 mt-10`}
       >
         <div class="mx-8 bg-transparent flex flex-col ">
           <FontAwesomeIcon
             class="text-white-100 bg-transparent w-10"
-            icon={
-              currentHour < 21 && currentHour > 7
-                ? codeWeather[index].icon
-                : codeWeather[index].iconNight
-            }
+            icon={regex < 21 && regex > 7 ? codeWeather[index].icon : codeWeather[index].iconNight}
           />
           <div class="bg-transparent flex justify-center font-bold">{props.temp}</div>
         </div>
