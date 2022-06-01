@@ -57,7 +57,7 @@ export default function App() {
   }, [])
   console.log('******', tokyo)
 
-  if (!paris || !london || !vancouver || !sydney) return null
+  if (!paris || !london || !vancouver || !sydney || !newYork || !tokyo) return null
 
   return (
     <div class="flex flex-wrap justify-around mt-20">
