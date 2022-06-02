@@ -1,66 +1,30 @@
-import axios from 'axios'
 import React from 'react'
-import 'dotenv/config'
 import CardCity from './components/CardCity'
 import './App.css'
+import * as API from './api'
 
-const API_Key = process.env.REACT_APP_API_Key
-const baseURLParis = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=48.8567,2.3508 Paris&aqi=no`
-const baseURLLondon = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=51.5073509,-0.1277583 London&aqi=no`
-const baseURLVancouver = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=45.6387281,-122.6614861 Vancouver&aqi=no`
-const baseURLSydney = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=-33.865143,151.209900 Sydney&aqi=no`
-const baseURLNewYork = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=40.730610,-73.935242 New York&aqi=no`
-const baseURLTokyo = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=35.6894,139.692 Tokyo&aqi=no`
+export default function App(
+  baseURLParis,
+  baseURLLondon,
+  baseURLNewYork,
+  baseURLSydney,
+  baseURLTokyo,
+  baseURLVancouver
+  // baseURLIP
+) {
+  // const location = API.GetIPLocation(baseURLIP)
+  const paris = API.GetParis(baseURLParis)
+  const london = API.GetLondon(baseURLLondon)
+  const vancouver = API.GetVancouver(baseURLVancouver)
+  const sydney = API.GetSydney(baseURLSydney)
+  const newyork = API.GetNewYork(baseURLNewYork)
+  const tokyo = API.GetTokyo(baseURLTokyo)
 
-export default function App() {
-  const [paris, setParis] = React.useState(null)
-  const [london, setLondon] = React.useState(null)
-  const [vancouver, setVancouver] = React.useState(null)
-  const [sydney, setSydney] = React.useState(null)
-  const [newYork, setNewYork] = React.useState(null)
-  const [tokyo, setTokyo] = React.useState(null)
-
-  React.useEffect(() => {
-    axios.get(baseURLParis).then(response => {
-      setParis(response.data)
-    })
-  }, [])
-  console.log('******', paris)
-  React.useEffect(() => {
-    axios.get(baseURLLondon).then(response => {
-      setLondon(response.data)
-    })
-  }, [])
-  console.log('******', london)
-  React.useEffect(() => {
-    axios.get(baseURLVancouver).then(response => {
-      setVancouver(response.data)
-    })
-  }, [])
-  console.log('******', vancouver)
-  React.useEffect(() => {
-    axios.get(baseURLSydney).then(response => {
-      setSydney(response.data)
-    })
-  }, [])
-  console.log('******', sydney)
-  React.useEffect(() => {
-    axios.get(baseURLNewYork).then(response => {
-      setNewYork(response.data)
-    })
-  }, [])
-  console.log('******', newYork)
-  React.useEffect(() => {
-    axios.get(baseURLTokyo).then(response => {
-      setTokyo(response.data)
-    })
-  }, [])
-  console.log('******', tokyo)
-
-  if (!paris || !london || !vancouver || !sydney || !newYork || !tokyo) return null
-
+  if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo) return null
+  // console.log('*****', location)
   return (
     <div class="flex flex-wrap justify-around mt-20">
+      {/* <CardCity name={location.city} /> */}
       <CardCity
         code={paris.current.condition.code}
         hour={paris.location.localtime}
@@ -86,10 +50,10 @@ export default function App() {
         name={sydney.location.name}
       />
       <CardCity
-        code={newYork.current.condition.code}
-        hour={newYork.location.localtime}
-        temp={newYork.current.temp_c}
-        name={newYork.location.name}
+        code={newyork.current.condition.code}
+        hour={newyork.location.localtime}
+        temp={newyork.current.temp_c}
+        name={newyork.location.name}
       />
       <CardCity
         code={tokyo.current.condition.code}
