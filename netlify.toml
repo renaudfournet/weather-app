@@ -1,1 +1,7 @@
-publish = "build"
+[build]
+  command = "npm run build"
+  publish = "build-output"
+
+ [[redirects]]
+  from = "https://some-url.com"
+  to = "https://some-other-url.com" 
