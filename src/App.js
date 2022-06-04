@@ -15,6 +15,7 @@ export default function App(
   const [toggle, setToggle] = useState(false)
   // const location = API.GetIPLocation(baseURLIP)
   const paris = API.GetParis(baseURLParis)
+  console.log('8888', paris)
   const london = API.GetLondon(baseURLLondon)
   const vancouver = API.GetVancouver(baseURLVancouver)
   const sydney = API.GetSydney(baseURLSydney)
@@ -76,6 +77,7 @@ export default function App(
           name={sydney.location.name}
         />
         <CardCity
+          toggle={toggle}
           code={newyork.current.condition.code}
           hour={newyork.location.localtime}
           temp={newyork.current.temp_c}

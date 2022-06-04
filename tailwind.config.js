@@ -3,7 +3,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      raleway: ['raleway', 'cursive']
+      raleway: ['jost', 'cursive']
     },
     screens: {
       xxs: '200px',

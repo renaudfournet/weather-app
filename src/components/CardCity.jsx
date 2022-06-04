@@ -67,7 +67,7 @@ export default function CardCity(props) {
                 </div>
               ) : (
                 <div>
-                  <span>{(props.temp * 1.8).toFixed(0)}</span>
+                  <span>{(props.temp * 1.8 + 32).toFixed(0)}</span>
                   <span>°F</span>
                 </div>
               )}

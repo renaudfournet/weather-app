@@ -293,6 +293,7 @@ let codeWeather = [
     code: 1276,
     day: 'Moderate or heavy rain with thunder',
     night: 'Moderate or heavy rain with thunder',
+    iconNight: faCloudMoon,
     icon: faCloudBolt
   },
   {
