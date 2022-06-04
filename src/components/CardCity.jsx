@@ -60,8 +60,17 @@ export default function CardCity(props) {
             />
             &nbsp;
             <div class="flex justify-center text-4xl">
-              <span>{props.temp}</span>
-              <span>°C</span>
+              {!props.toggle ? (
+                <div>
+                  <span>{props.temp}</span>
+                  <span>°C</span>
+                </div>
+              ) : (
+                <div>
+                  <span>{(props.temp * 1.8).toFixed(0)}</span>
+                  <span>°F</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
