@@ -33,14 +33,9 @@ export const GetParis = () => {
   const baseURLParis = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=48.8567,2.3508 Paris&aqi=no`
   const [paris, setParis] = React.useState(null)
   React.useEffect(() => {
-    axios
-      .get(baseURLParis)
-      .then(response => {
-        setParis(response.data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    axios.get(baseURLParis).then(response => {
+      setParis(response.data)
+    })
   }, [baseURLParis])
   return paris
 }
@@ -49,14 +44,9 @@ export const GetLondon = () => {
   const baseURLLondon = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=51.5073509,-0.1277583 London&aqi=no`
   const [london, setLondon] = React.useState(null)
   React.useEffect(() => {
-    axios
-      .get(baseURLLondon)
-      .then(response => {
-        setLondon(response.data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    axios.get(baseURLLondon).then(response => {
+      setLondon(response.data)
+    })
   }, [baseURLLondon])
   return london
 }
@@ -65,14 +55,9 @@ export const GetVancouver = () => {
   const baseURLVancouver = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=45.6387281,-122.6614861 Vancouver&aqi=no`
   const [vancouver, setVancouver] = React.useState(null)
   React.useEffect(() => {
-    axios
-      .get(baseURLVancouver)
-      .then(response => {
-        setVancouver(response.data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    axios.get(baseURLVancouver).then(response => {
+      setVancouver(response.data)
+    })
   }, [baseURLVancouver])
   return vancouver
 }
@@ -81,14 +66,9 @@ export const GetSydney = () => {
   const baseURLSydney = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=-33.865143,151.209900 Sydney&aqi=no`
   const [sydney, setSydney] = React.useState(null)
   React.useEffect(() => {
-    axios
-      .get(baseURLSydney)
-      .then(response => {
-        setSydney(response.data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    axios.get(baseURLSydney).then(response => {
+      setSydney(response.data)
+    })
   }, [baseURLSydney])
   return sydney
 }
@@ -97,30 +77,20 @@ export const GetNewYork = () => {
   const baseURLNewYork = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=40.730610,-73.935242 New York&aqi=no`
   const [newYork, setnewYork] = React.useState(null)
   React.useEffect(() => {
-    axios
-      .get(baseURLNewYork)
-      .then(response => {
-        setnewYork(response.data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    axios.get(baseURLNewYork).then(response => {
+      setnewYork(response.data)
+    })
   }, [baseURLNewYork])
   return newYork
 }
 
 export const GetTokyo = () => {
   const baseURLTokyo = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=35.6894,139.692 Tokyo&aqi=no`
-  const [Tokyo, setTokyo] = React.useState(null)
+  const [tokyo, setTokyo] = React.useState(null)
   React.useEffect(() => {
-    axios
-      .get(baseURLTokyo)
-      .then(response => {
-        setTokyo(response.data)
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    axios.get(baseURLTokyo).then(response => {
+      setTokyo(response.data)
+    })
   }, [baseURLTokyo])
-  return Tokyo
+  return tokyo
 }
