@@ -16,20 +16,21 @@ export default function CardCity(props) {
 
   // get month
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
+    'janvier',
+    'février',
+    'mars',
+    'avril',
+    'mai',
+    'juin',
+    'juillet',
+    'août',
+    'septembre',
+    'octobre',
+    'novembre',
+    'décembre'
   ]
 
-  let month = months[parseInt(date.slice(5, 7)) - 2]
+  let month = months[parseInt(date.slice(5, 7)) - 1]
 
   // get year
 
@@ -42,27 +43,35 @@ export default function CardCity(props) {
   return (
     <>
       <div
-        class={`flex items-center justify-between w-1/3 h-32 rounded-lg text-white-100 bg-${
-          regex < 21 && regex > 6 ? 'blue-600' : 'black-200'
-        } mx-10 mt-10`}
+        class={`flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-${
+          regex < 21 && regex > 6 ? 'primary-100' : 'secondary-100'
+        }`}
       >
         <div class="mx-8 flex flex-col">
-          <FontAwesomeIcon
-            class="text-white-100 w-10"
-            icon={regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight}
-          />
-          <div class="flex justify-center font-bold text-2xl">{props.temp}</div>
-        </div>
-        <div class="mx-8 ">
-          <div class="flex flex-col justify-center font-bold">
-            <div class="flex justify-end">{time}</div>
-            <div class="flex justify-between">
-              <div>
-                {day}&nbsp;{month}&nbsp;{year}
-              </div>
+          <div>
+            <div class="flex uppercase text-3xl">{props.name}</div>
+          </div>
+          <div class="flex">
+            <FontAwesomeIcon
+              class="text-white-100 w-10"
+              icon={
+                regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
+              }
+            />
+            &nbsp;
+            <div class="flex justify-center text-4xl">
+              <span>{props.temp}</span>
+              <span>°C</span>
             </div>
           </div>
-          <div class=" flex justify-end font-bold">{props.name}</div>
+        </div>
+        <div class="mx-8 ">
+          <div class="flex flex-col justify-center">
+            <div class="flex justify-end text-2xl">{time}</div>
+            <div class="flex justify-between text-2xl">
+              {day}&nbsp;{month}&nbsp;{year}
+            </div>
+          </div>
         </div>
       </div>
     </>

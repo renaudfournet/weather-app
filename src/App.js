@@ -23,7 +23,7 @@ export default function App(
   if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo) return null
   // console.log('*****', location)
   return (
-    <div class="flex flex-wrap justify-around mt-20">
+    <div class="grid h-max grid-cols-1 md:grid-cols-1 lg:grid-cols-2 m-5 xs:mx-2 md:mx-2 lg:mx-20 xl:mx-52 gap-4 lg:mt-20">
       {/* <CardCity name={location.city} /> */}
       <CardCity
         code={paris.current.condition.code}
