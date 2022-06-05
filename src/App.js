@@ -23,7 +23,7 @@ export default function App(
   const tokyo = API.GetTokyo(baseURLTokyo)
 
   if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo) return null
-  // console.log('*****', location)
+  console.log('*****', paris)
 
   const toggler = () => {
     toggle ? setToggle(false) : setToggle(true)

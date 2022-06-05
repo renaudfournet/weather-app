@@ -47,9 +47,7 @@ export default function CardCity(props) {
           <div class="flex relative items-center justify-between w-full h-44 rounded-lg text-white-100 bg-primary-100">
             <div class="ml-8 flex flex-col">
               <div>
-                <div class="flex uppercase whitespace-nowrap xxs:text-2xl md:text-3xl">
-                  {props.name}
-                </div>
+                <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
               </div>
               <div class="flex">
                 <FontAwesomeIcon
