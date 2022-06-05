@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as React from 'react'
+import React from 'react'
 import codeWeather from './codeWeather'
 
 export default function CardCity(props) {
@@ -43,7 +43,7 @@ export default function CardCity(props) {
   return (
     <>
       <div
-        class={`flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-${
+        class={`flex items-center justify-between w-auto h-44 rounded-lg text-black-100 bg-${
           regex < 21 && regex > 6 ? 'primary-100' : 'secondary-100'
         }`}
       >
