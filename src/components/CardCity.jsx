@@ -44,10 +44,12 @@ export default function CardCity(props) {
     <>
       {regex < 21 && regex > 6 ? (
         <div>
-          <div class="flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-primary-100">
-            <div class="mx-8 flex flex-col">
+          <div class="flex relative items-center justify-between w-full h-44 rounded-lg text-white-100 bg-primary-100">
+            <div class="ml-8 flex flex-col">
               <div>
-                <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
+                <div class="flex uppercase whitespace-nowrap xxs:text-2xl md:text-3xl">
+                  {props.name}
+                </div>
               </div>
               <div class="flex">
                 <FontAwesomeIcon
@@ -72,7 +74,7 @@ export default function CardCity(props) {
                 </div>
               </div>
             </div>
-            <div class="mx-8 ">
+            <div class="mr-8">
               <div class="flex flex-col justify-center">
                 <div class="flex justify-end text-2xl">{time}</div>
                 <div class="flex justify-between text-2xl">
@@ -83,8 +85,8 @@ export default function CardCity(props) {
           </div>
         </div>
       ) : (
-        <div class="flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-secondary-100">
-          <div class="mx-8 flex flex-col">
+        <div class="flex items-center justify-between w-full h-44 rounded-lg text-white-100 bg-secondary-100">
+          <div class="ml-8 flex flex-col">
             <div>
               <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
             </div>
@@ -111,7 +113,7 @@ export default function CardCity(props) {
               </div>
             </div>
           </div>
-          <div class="mx-8 ">
+          <div class="mr-8 ">
             <div class="flex flex-col justify-center">
               <div class="flex justify-end text-2xl">{time}</div>
               <div class="flex justify-between text-2xl">

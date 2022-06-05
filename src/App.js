@@ -46,7 +46,7 @@ export default function App(
           <div class="label-text text-2xl">&nbsp;°F</div>
         </div>
       </div>
-      <div class="grid h-max grid-cols-1 md:grid-cols-1 lg:grid-cols-2 m-5 xs:mx-2 md:mx-2 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
+      <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
         {/* <CardCity name={location.city} /> */}
         <CardCity
           toggle={toggle}
