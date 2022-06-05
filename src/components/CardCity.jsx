@@ -54,9 +54,9 @@ export default function CardCity(props) {
           <div class="flex">
             <FontAwesomeIcon
               class="text-white-100 w-10"
-              icon={
-                regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
-              }
+              // icon={
+              //   regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
+              // }
             />
             &nbsp;
             <div class="flex justify-center text-4xl">

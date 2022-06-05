@@ -13,16 +13,16 @@ export default function App(
   // baseURLIP
 ) {
   const [toggle, setToggle] = useState(false)
-  // const location = API.GetIPLocation(baseURLIP)
   const paris = API.GetParis(baseURLParis)
-  console.log('8888', paris)
-  const london = API.GetLondon(baseURLLondon)
-  const vancouver = API.GetVancouver(baseURLVancouver)
-  const sydney = API.GetSydney(baseURLSydney)
-  const newyork = API.GetNewYork(baseURLNewYork)
-  const tokyo = API.GetTokyo(baseURLTokyo)
+  console.log('NEW', paris)
 
-  if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo) return null
+  // const london = API.GetLondon(baseURLLondon)
+  // const vancouver = API.GetVancouver(baseURLVancouver)
+  // const sydney = API.GetSydney(baseURLSydney)
+  // const newyork = API.GetNewYork(baseURLNewYork)
+  // const tokyo = API.GetTokyo(baseURLTokyo)
+
+  if (!paris) return null
   // console.log('*****', location)
 
   const toggler = () => {
@@ -50,12 +50,12 @@ export default function App(
         {/* <CardCity name={location.city} /> */}
         <CardCity
           toggle={toggle}
-          code={paris.current.condition.code}
-          hour={paris.location.localtime}
-          temp={paris.current.temp_c}
-          name={paris.location.name}
+          code={paris.current_weather.weathercode}
+          hour={paris.current_weather.time}
+          temp={paris.current_weather.temperature}
+          name="Paris"
         />
-        <CardCity
+        {/* <CardCity
           toggle={toggle}
           code={london.current.condition.code}
           hour={london.location.localtime}
@@ -89,7 +89,7 @@ export default function App(
           hour={tokyo.location.localtime}
           temp={tokyo.current.temp_c}
           name={tokyo.location.name}
-        />
+        /> */}
       </div>
     </>
   )
