@@ -2,7 +2,6 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
   "dependencies": {
     "@craco/craco": "^6.4.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",

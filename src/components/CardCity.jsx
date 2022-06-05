@@ -43,7 +43,7 @@ export default function CardCity(props) {
   return (
     <>
       <div
-        className={`flex items-center justify-between w-auto h-44 rounded-lg text-black-100 bg-${
+        class={`flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-${
           regex < 21 && regex > 6 ? 'primary-100' : 'secondary-100'
         }`}
       >
