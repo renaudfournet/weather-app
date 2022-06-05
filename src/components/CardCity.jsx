@@ -42,47 +42,85 @@ export default function CardCity(props) {
 
   return (
     <>
-      <div
-        className={`flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-${
-          regex < 21 && regex > 6 ? 'primary-100' : 'secondary-100'
-        }`}
-      >
-        <div class="mx-8 flex flex-col">
-          <div>
-            <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
-          </div>
-          <div class="flex">
-            <FontAwesomeIcon
-              class="text-white-100 w-10"
-              icon={
-                regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
-              }
-            />
-            &nbsp;
-            <div class="flex justify-center text-4xl">
-              {!props.toggle ? (
-                <div>
-                  <span>{props.temp}</span>
-                  <span>°C</span>
+      {regex < 21 && regex > 6 ? (
+        <div>
+          <div class="flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-primary-100">
+            <div class="mx-8 flex flex-col">
+              <div>
+                <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
+              </div>
+              <div class="flex">
+                <FontAwesomeIcon
+                  class="text-white-100 w-10"
+                  icon={
+                    regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
+                  }
+                />
+                &nbsp;
+                <div class="flex justify-center text-4xl">
+                  {!props.toggle ? (
+                    <div>
+                      <span>{props.temp}</span>
+                      <span>°C</span>
+                    </div>
+                  ) : (
+                    <div>
+                      <span>{(props.temp * 1.8 + 32).toFixed(0)}</span>
+                      <span>°F</span>
+                    </div>
+                  )}
                 </div>
-              ) : (
-                <div>
-                  <span>{(props.temp * 1.8 + 32).toFixed(0)}</span>
-                  <span>°F</span>
+              </div>
+            </div>
+            <div class="mx-8 ">
+              <div class="flex flex-col justify-center">
+                <div class="flex justify-end text-2xl">{time}</div>
+                <div class="flex justify-between text-2xl">
+                  {day}&nbsp;{month}&nbsp;{year}
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
-        <div class="mx-8 ">
-          <div class="flex flex-col justify-center">
-            <div class="flex justify-end text-2xl">{time}</div>
-            <div class="flex justify-between text-2xl">
-              {day}&nbsp;{month}&nbsp;{year}
+      ) : (
+        <div class="flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-secondary-100">
+          <div class="mx-8 flex flex-col">
+            <div>
+              <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
+            </div>
+            <div class="flex">
+              <FontAwesomeIcon
+                class="text-white-100 w-10"
+                icon={
+                  regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
+                }
+              />
+              &nbsp;
+              <div class="flex justify-center text-4xl">
+                {!props.toggle ? (
+                  <div>
+                    <span>{props.temp}</span>
+                    <span>°C</span>
+                  </div>
+                ) : (
+                  <div>
+                    <span>{(props.temp * 1.8 + 32).toFixed(0)}</span>
+                    <span>°F</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div class="mx-8 ">
+            <div class="flex flex-col justify-center">
+              <div class="flex justify-end text-2xl">{time}</div>
+              <div class="flex justify-between text-2xl">
+                {day}&nbsp;{month}&nbsp;{year}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   )
 }
