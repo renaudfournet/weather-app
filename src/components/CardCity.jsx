@@ -42,7 +42,11 @@ export default function CardCity(props) {
 
   return (
     <>
-      <div class="flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-primary-100">
+      <div
+        class={`flex items-center justify-between w-auto h-44 rounded-lg text-white-100 bg-${
+          regex < 21 && regex > 6 ? 'primary-100' : 'secondary-100'
+        }`}
+      >
         <div class="mx-8 flex flex-col">
           <div>
             <div class="flex uppercase text-3xl">{props.name}</div>
