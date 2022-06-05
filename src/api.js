@@ -29,20 +29,9 @@ const API_Key = process.env.REACT_APP_API_Key
 //   return location
 // }
 
-export const GetParis = () => {
-  const baseURLParis =
-    'https://api.open-meteo.com/v1/forecast?latitude=48.8567&longitude=2.3510&hourly=temperature_2m,weathercode&daily=weathercode,sunrise,sunset&current_weather=true&timezone=Europe%2FBerlin'
-  const [paris, setParis] = React.useState(null)
-  React.useEffect(() => {
-    axios.get(baseURLParis).then(response => {
-      setParis(response.data)
-    })
-  }, [baseURLParis])
-  return paris
-}
-
 // export const GetParis = () => {
-//   const baseURLParis = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=48.8567,2.3508 Paris&aqi=no`
+//   const baseURLParis =
+//     'https://api.open-meteo.com/v1/forecast?latitude=48.8567&longitude=2.3510&hourly=temperature_2m,weathercode&daily=weathercode,sunrise,sunset&current_weather=true&timezone=Europe%2FBerlin'
 //   const [paris, setParis] = React.useState(null)
 //   React.useEffect(() => {
 //     axios.get(baseURLParis).then(response => {
@@ -51,6 +40,17 @@ export const GetParis = () => {
 //   }, [baseURLParis])
 //   return paris
 // }
+
+export const GetParis = () => {
+  const baseURLParis = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=48.8567,2.3508 Paris&aqi=no`
+  const [paris, setParis] = React.useState(null)
+  React.useEffect(() => {
+    axios.get(baseURLParis).then(response => {
+      setParis(response.data)
+    })
+  }, [baseURLParis])
+  return paris
+}
 
 export const GetLondon = () => {
   const baseURLLondon = `http://api.weatherapi.com/v1/current.json?key=${API_Key}&q=51.5073509,-0.1277583 London&aqi=no`
