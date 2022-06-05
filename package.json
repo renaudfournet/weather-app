@@ -1,8 +1,8 @@
 {
-  "homepage": ".",
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@craco/craco": "^6.4.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -47,5 +47,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "tailwindcss": "^1"
   }
 }
