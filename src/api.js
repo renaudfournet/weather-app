@@ -5,40 +5,16 @@ import 'dotenv/config'
 const API_Key = process.env.REACT_APP_API_Key
 
 // export const GetIP = () => {
-//   const [ip, setIP] = React.useState('')
-//   const getData = async () => {
-//     const res = await axios.get('https://geolocation-db.com/json/')
-//     console.log('*********', res.data)
-//     setIP(res.data.IPv4)
-//     return setIP(res.data)
-//   }
-
+//   const IP = 'https://geolocation-db.com/json/'
+//   const [ip, setIP] = React.useState(null)
+//   // const baseURLIP = `http://api.weatherapi.com/v1/ip.json?key=${API_Key}&q=${ip.IPv4}`
+//   // const [location, setLocation] = React.useState(null)
 //   React.useEffect(() => {
-//     getData()
+//     axios.get(IP).then(response => {
+//       setIP(response.data)
+//     })
 //   }, [])
-// }
-
-// export const GetIPLocation = () => {
-//   const [location, setLocation] = React.useState(null)
-//   const baseURLIP = `http://api.weatherapi.com/v1/ip.json?key=${API_Key}&q=${getData()}`
-//   React.useEffect(() => {
-//     axios.get(baseURLIP, { headers: { 'Access-Control-Allow-Origin': '*' } }).then(response => {
-//       setLocation(response.data)
-//     })
-//   }, [baseURLIP])
-//   return location
-// }
-
-// export const GetParis = () => {
-//   const baseURLParis =
-//     'https://api.open-meteo.com/v1/forecast?latitude=48.8567&longitude=2.3510&hourly=temperature_2m,weathercode&daily=weathercode,sunrise,sunset&current_weather=true&timezone=Europe%2FBerlin'
-//   const [paris, setParis] = React.useState(null)
-//   React.useEffect(() => {
-//     axios.get(baseURLParis).then(response => {
-//       setParis(response.data)
-//     })
-//   }, [baseURLParis])
-//   return paris
+//   return ip
 // }
 
 export const GetParis = () => {

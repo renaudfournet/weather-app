@@ -10,11 +10,12 @@ export default function App(
   baseURLSydney,
   baseURLTokyo,
   baseURLVancouver
-  // baseURLIP
+  // IP
 ) {
   const [toggle, setToggle] = useState(false)
-  // const paris = API.GetParis(baseURLParis)
-  // console.log('NEW', paris)
+  // const ip = API.GetIP(IP)
+  // console.log('NEWWWWW', ip.iPv4)
+
   const paris = API.GetParis(baseURLParis)
   const london = API.GetLondon(baseURLLondon)
   const vancouver = API.GetVancouver(baseURLVancouver)
@@ -23,7 +24,7 @@ export default function App(
   const tokyo = API.GetTokyo(baseURLTokyo)
 
   if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo) return null
-  console.log('*****', paris)
+  // console.log('*****', paris)
 
   const toggler = () => {
     toggle ? setToggle(false) : setToggle(true)
@@ -47,7 +48,7 @@ export default function App(
         </div>
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
-        {/* <CardCity name={location.city} /> */}
+        {/* <CardCity name={ip.location.name} /> */}
         <CardCity
           toggle={toggle}
           code={paris.current.condition.code}
