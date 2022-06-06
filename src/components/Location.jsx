@@ -2,17 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import codeWeather from './codeWeather'
 
-export default function Location({ weatherData }) {
+export default function Location(props) {
   // get index for code weather
-  let index = codeWeather.findIndex(item => item.code === weatherData.code)
+  let index = codeWeather.findIndex(item => item.code === props.code)
 
   // isolate hour number
-  let currentHour = weatherData.hour.split('')[11] + weatherData.hour.split('')[12]
+  let currentHour = props.hour.split('')[11] + props.hour.split('')[12]
   const regex = currentHour.replace(':', '')
 
   // get time and date
-  let date = weatherData.hour.slice(0, 11)
-  let time = weatherData.hour.slice(11)
+  let date = props.hour.slice(0, 11)
+  let time = props.hour.slice(11)
 
   // get month
   const months = [
@@ -47,7 +47,7 @@ export default function Location({ weatherData }) {
           <div class="flex relative items-center justify-between w-full h-44 rounded-lg text-white-100 bg-primary-100">
             <div class="ml-8 flex flex-col">
               <div>
-                <div class="flex uppercase whitespace-nowrap text-3xl">{weatherData.name}</div>
+                <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
               </div>
               <div class="flex">
                 <FontAwesomeIcon
@@ -58,14 +58,14 @@ export default function Location({ weatherData }) {
                 />
                 &nbsp;
                 <div class="flex justify-center text-4xl">
-                  {!weatherData.toggle ? (
+                  {!props.toggle ? (
                     <div>
-                      <span>{weatherData.temp}</span>
+                      <span>{props.temp}</span>
                       <span>°C</span>
                     </div>
                   ) : (
                     <div>
-                      <span>{(weatherData.temp * 1.8 + 32).toFixed(0)}</span>
+                      <span>{(props.temp * 1.8 + 32).toFixed(0)}</span>
                       <span>°F</span>
                     </div>
                   )}
@@ -86,7 +86,7 @@ export default function Location({ weatherData }) {
         <div class="flex items-center justify-between w-full h-44 rounded-lg text-white-100 bg-secondary-100">
           <div class="ml-8 flex flex-col">
             <div>
-              <div class="flex uppercase whitespace-nowrap text-3xl">{weatherData.name}</div>
+              <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
             </div>
             <div class="flex">
               <FontAwesomeIcon
@@ -97,14 +97,14 @@ export default function Location({ weatherData }) {
               />
               &nbsp;
               <div class="flex justify-center text-4xl">
-                {!weatherData.toggle ? (
+                {!props.toggle ? (
                   <div>
-                    <span>{weatherData.temp}</span>
+                    <span>{props.temp}</span>
                     <span>°C</span>
                   </div>
                 ) : (
                   <div>
-                    <span>{(weatherData.temp * 1.8 + 32).toFixed(0)}</span>
+                    <span>{(props.temp * 1.8 + 32).toFixed(0)}</span>
                     <span>°F</span>
                   </div>
                 )}

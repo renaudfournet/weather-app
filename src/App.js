@@ -75,7 +75,13 @@ export default function App(
         </div>
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
-        {typeof data.main != 'undefined' ? <Location weatherData={data} /> : ''}
+        <Location
+          code={data.current.condition.code}
+          hour={data.location.localtime}
+          temp={data.current.temp_c}
+          name={data.location.name}
+        />
+
         <CardCity
           toggle={toggle}
           code={paris.current.condition.code}
