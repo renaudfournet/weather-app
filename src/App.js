@@ -5,6 +5,9 @@ import './App.css'
 import * as API from './api'
 // import axios from 'axios'
 import 'dotenv/config'
+import { css } from '@emotion/react'
+import ClipLoader from 'react-spinners/ClipLoader'
+
 const API_Key = process.env.REACT_APP_API_Key
 
 export default function App(
@@ -15,6 +18,13 @@ export default function App(
   baseURLTokyo,
   baseURLVancouver
 ) {
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: blue;
+  `
+  let [loading, setLoading] = React.useState(true)
+  let [color, setColor] = React.useState('')
   const [toggle, setToggle] = React.useState(false)
   // const ip = API.GetIP(IP)
   // console.log('IP', ip)
@@ -54,7 +64,7 @@ export default function App(
     toggle ? setToggle(false) : setToggle(true)
   }
   console.log('WEATHERDATA', data)
-  if (!data) return null
+
   return (
     <>
       <div class="flex justify-end mt-2 mx-2">
@@ -94,7 +104,12 @@ export default function App(
             name={paris.location.name}
           />
         ) : (
-          ''
+          <div className="sweet-loading">
+            <button onClick={() => setLoading(!loading)}></button>
+            <input value={color} onChange={input => setColor(input.target.value)} />
+
+            <ClipLoader color={color} loading={loading} css={override} size={150} />
+          </div>
         )}
         {typeof data.current != 'undefined' ? (
           <CardCity
