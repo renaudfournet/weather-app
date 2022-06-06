@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import CardCity from './components/CardCity'
 import './App.css'
 import * as API from './api'
+// import axios from 'axios'
+const API_Key = process.env.REACT_APP_API_Key
 
 export default function App(
   baseURLParis,
@@ -10,20 +12,44 @@ export default function App(
   baseURLSydney,
   baseURLTokyo,
   baseURLVancouver
-  // IP
 ) {
   const [toggle, setToggle] = useState(false)
   // const ip = API.GetIP(IP)
-  // console.log('NEWWWWW', ip.iPv4)
+  // console.log('IP', ip)
+  // const location = API.GetLocation(baseURLLocation)
+  // console.log('LOCATION', location)
 
+  const [lat, setLat] = useState([])
+  const [long, setLong] = useState([])
+  const [data, setData] = useState([])
   const paris = API.GetParis(baseURLParis)
+  // console.log('PARIS', paris)
   const london = API.GetLondon(baseURLLondon)
   const vancouver = API.GetVancouver(baseURLVancouver)
   const sydney = API.GetSydney(baseURLSydney)
   const newyork = API.GetNewYork(baseURLNewYork)
   const tokyo = API.GetTokyo(baseURLTokyo)
 
-  if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo) return null
+  React.useEffect(() => {
+    const fetchData = async () => {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setLat(position.coords.latitude)
+        setLong(position.coords.longitude)
+      })
+      await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_Key}&q=${lat},${long}`)
+        .then(res => res.json())
+        .then(result => {
+          setData(result)
+          console.log(result)
+        })
+    }
+    console.log('Latitude is:', lat)
+    console.log('Longitude is:', long)
+    console.log('DATA:', data)
+    fetchData()
+  }, [lat, long])
+
+  if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo || !data) return null
   // console.log('*****', paris)
 
   const toggler = () => {
@@ -48,7 +74,12 @@ export default function App(
         </div>
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
-        {/* <CardCity name={ip.location.name} /> */}
+        <CardCity
+          name={data.location.name}
+          hour={data.location.localtime}
+          temp={data.current.temp_c}
+          code={data.current.condition.code}
+        />
         <CardCity
           toggle={toggle}
           code={paris.current.condition.code}
