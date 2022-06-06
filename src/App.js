@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CardCity from './components/CardCity'
+import Location from './components/Location'
 import './App.css'
 import * as API from './api'
 // import axios from 'axios'
@@ -13,22 +14,15 @@ export default function App(
   baseURLTokyo,
   baseURLVancouver
 ) {
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = React.useState(false)
   // const ip = API.GetIP(IP)
   // console.log('IP', ip)
   // const location = API.GetLocation(baseURLLocation)
   // console.log('LOCATION', location)
 
-  const [lat, setLat] = useState([])
-  const [long, setLong] = useState([])
-  const [data, setData] = useState([])
-  const paris = API.GetParis(baseURLParis)
-  // console.log('PARIS', paris)
-  const london = API.GetLondon(baseURLLondon)
-  const vancouver = API.GetVancouver(baseURLVancouver)
-  const sydney = API.GetSydney(baseURLSydney)
-  const newyork = API.GetNewYork(baseURLNewYork)
-  const tokyo = API.GetTokyo(baseURLTokyo)
+  const [lat, setLat] = React.useState([])
+  const [long, setLong] = React.useState([])
+  const [data, setData] = React.useState([])
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -40,17 +34,24 @@ export default function App(
         .then(res => res.json())
         .then(result => {
           setData(result)
-          console.log(result)
+          console.log('DATA', result)
         })
     }
     console.log('Latitude is:', lat)
     console.log('Longitude is:', long)
-    console.log('DATA:', data)
+    // console.log('DATA:', data)
     fetchData()
-  }, [lat, long, data])
+  }, [lat, long])
+
+  const paris = API.GetParis(baseURLParis)
+  // console.log('PARIS', paris)
+  const london = API.GetLondon(baseURLLondon)
+  const vancouver = API.GetVancouver(baseURLVancouver)
+  const sydney = API.GetSydney(baseURLSydney)
+  const newyork = API.GetNewYork(baseURLNewYork)
+  const tokyo = API.GetTokyo(baseURLTokyo)
 
   if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo || !data) return null
-  // console.log('*****', paris)
 
   const toggler = () => {
     toggle ? setToggle(false) : setToggle(true)
@@ -74,13 +75,7 @@ export default function App(
         </div>
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
-        <CardCity
-          toggle={toggle}
-          hour={data.location.localtime}
-          temp={data.current.temp_c}
-          code={data.current.condition.code}
-          name={data.location.name}
-        />
+        {typeof data.main != 'undefined' ? <Location weatherData={data} /> : ''}
         <CardCity
           toggle={toggle}
           code={paris.current.condition.code}
