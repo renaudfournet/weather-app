@@ -3,6 +3,7 @@ import React from 'react'
 import codeWeather from './codeWeather'
 
 export default function Location(props) {
+  console.log('props', props)
   // get index for code weather
   let index = codeWeather.findIndex(item => item.code === props.code)
 

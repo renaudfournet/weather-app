@@ -4,6 +4,7 @@ import Location from './components/Location'
 import './App.css'
 import * as API from './api'
 // import axios from 'axios'
+import 'dotenv/config'
 const API_Key = process.env.REACT_APP_API_Key
 
 export default function App(
@@ -43,19 +44,19 @@ export default function App(
     fetchData()
   }, [lat, long])
 
-  const paris = API.GetParis(baseURLParis)
-  // console.log('PARIS', paris)
-  const london = API.GetLondon(baseURLLondon)
-  const vancouver = API.GetVancouver(baseURLVancouver)
-  const sydney = API.GetSydney(baseURLSydney)
-  const newyork = API.GetNewYork(baseURLNewYork)
-  const tokyo = API.GetTokyo(baseURLTokyo)
-
-  if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo || !data) return null
+  // const paris = API.GetParis(baseURLParis)
+  // // console.log('PARIS', paris)
+  // const london = API.GetLondon(baseURLLondon)
+  // const vancouver = API.GetVancouver(baseURLVancouver)
+  // const sydney = API.GetSydney(baseURLSydney)
+  // const newyork = API.GetNewYork(baseURLNewYork)
+  // const tokyo = API.GetTokyo(baseURLTokyo)
 
   const toggler = () => {
     toggle ? setToggle(false) : setToggle(true)
   }
+  console.log('WEATHERDATA', data)
+  // if (!data) return null
   return (
     <>
       <div class="flex justify-end mt-2 mx-2">
@@ -75,21 +76,25 @@ export default function App(
         </div>
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
-        <Location
-          code={data.current.condition.code}
-          hour={data.location.localtime}
-          temp={data.current.temp_c}
-          name={data.location.name}
-        />
+        {typeof data != 'undefined' ? (
+          <Location
+            code={data.current.condition.code}
+            hour={data.location.localtime}
+            temp={data.current.temp_c}
+            name={data.location.name}
+          />
+        ) : (
+          ''
+        )}
 
-        <CardCity
+        {/* <CardCity
           toggle={toggle}
           code={paris.current.condition.code}
           hour={paris.location.localtime}
           temp={paris.current.temp_c}
           name={paris.location.name}
-        />
-        <CardCity
+        /> */}
+        {/* <CardCity
           toggle={toggle}
           code={london.current.condition.code}
           hour={london.location.localtime}
@@ -123,7 +128,7 @@ export default function App(
           hour={tokyo.location.localtime}
           temp={tokyo.current.temp_c}
           name={tokyo.location.name}
-        />
+        /> */}
       </div>
     </>
   )
