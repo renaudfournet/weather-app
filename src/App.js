@@ -1,8 +1,8 @@
 import React from 'react'
-import CardCity from './components/CardCity'
+// import CardCity from './components/CardCity'
 import Location from './components/Location'
 import './App.css'
-import * as API from './api'
+// import * as API from './api'
 // import axios from 'axios'
 import 'dotenv/config'
 const API_Key = process.env.REACT_APP_API_Key
@@ -20,7 +20,7 @@ export default function App(
   // console.log('IP', ip)
   // const location = API.GetLocation(baseURLLocation)
   // console.log('LOCATION', location)
-
+  // `https://api.weatherapi.com/v1/current.json?key=${API_Key}&q=${lat},${long}`
   const [lat, setLat] = React.useState([])
   const [long, setLong] = React.useState([])
   const [data, setData] = React.useState([])
@@ -31,16 +31,14 @@ export default function App(
         setLat(position.coords.latitude)
         setLong(position.coords.longitude)
       })
-      await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_Key}&q=${lat},${long}`)
+
+      await fetch(`https://api.weatherapi.com/v1/current.json?key=${API_Key}&q=${lat},${long} `)
         .then(res => res.json())
         .then(result => {
           setData(result)
-          console.log('DATA', result)
+          // console.log(result)
         })
     }
-    console.log('Latitude is:', lat)
-    console.log('Longitude is:', long)
-    // console.log('DATA:', data)
     fetchData()
   }, [lat, long])
 
@@ -56,7 +54,7 @@ export default function App(
     toggle ? setToggle(false) : setToggle(true)
   }
   console.log('WEATHERDATA', data)
-  // if (!data) return null
+  if (!data) return null
   return (
     <>
       <div class="flex justify-end mt-2 mx-2">
@@ -76,7 +74,7 @@ export default function App(
         </div>
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
-        {typeof data != 'undefined' ? (
+        {typeof data.current != 'undefined' ? (
           <Location
             code={data.current.condition.code}
             hour={data.location.localtime}
@@ -84,7 +82,7 @@ export default function App(
             name={data.location.name}
           />
         ) : (
-          ''
+          <div></div>
         )}
 
         {/* <CardCity
