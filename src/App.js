@@ -1,8 +1,8 @@
 import React from 'react'
-// import CardCity from './components/CardCity'
+import CardCity from './components/CardCity'
 import Location from './components/Location'
 import './App.css'
-// import * as API from './api'
+import * as API from './api'
 // import axios from 'axios'
 import 'dotenv/config'
 const API_Key = process.env.REACT_APP_API_Key
@@ -42,13 +42,13 @@ export default function App(
     fetchData()
   }, [lat, long])
 
-  // const paris = API.GetParis(baseURLParis)
-  // // console.log('PARIS', paris)
-  // const london = API.GetLondon(baseURLLondon)
-  // const vancouver = API.GetVancouver(baseURLVancouver)
-  // const sydney = API.GetSydney(baseURLSydney)
-  // const newyork = API.GetNewYork(baseURLNewYork)
-  // const tokyo = API.GetTokyo(baseURLTokyo)
+  const paris = API.GetParis(baseURLParis)
+  // console.log('PARIS', paris)
+  const london = API.GetLondon(baseURLLondon)
+  const vancouver = API.GetVancouver(baseURLVancouver)
+  const sydney = API.GetSydney(baseURLSydney)
+  const newyork = API.GetNewYork(baseURLNewYork)
+  const tokyo = API.GetTokyo(baseURLTokyo)
 
   const toggler = () => {
     toggle ? setToggle(false) : setToggle(true)
@@ -85,14 +85,73 @@ export default function App(
         ) : (
           ''
         )}
+        {typeof data.current != 'undefined' ? (
+          <CardCity
+            toggle={toggle}
+            code={paris.current.condition.code}
+            hour={paris.location.localtime}
+            temp={paris.current.temp_c}
+            name={paris.location.name}
+          />
+        ) : (
+          ''
+        )}
+        {typeof data.current != 'undefined' ? (
+          <CardCity
+            toggle={toggle}
+            code={london.current.condition.code}
+            hour={london.location.localtime}
+            temp={london.current.temp_c}
+            name={london.location.name}
+          />
+        ) : (
+          ''
+        )}
+        {typeof data.current != 'undefined' ? (
+          <CardCity
+            toggle={toggle}
+            code={vancouver.current.condition.code}
+            hour={vancouver.location.localtime}
+            temp={vancouver.current.temp_c}
+            name={vancouver.location.name}
+          />
+        ) : (
+          ''
+        )}
+        {typeof data.current != 'undefined' ? (
+          <CardCity
+            toggle={toggle}
+            code={sydney.current.condition.code}
+            hour={sydney.location.localtime}
+            temp={sydney.current.temp_c}
+            name={sydney.location.name}
+          />
+        ) : (
+          ''
+        )}
+        {typeof data.current != 'undefined' ? (
+          <CardCity
+            toggle={toggle}
+            code={tokyo.current.condition.code}
+            hour={tokyo.location.localtime}
+            temp={tokyo.current.temp_c}
+            name={tokyo.location.name}
+          />
+        ) : (
+          ''
+        )}
+        {typeof data.current != 'undefined' ? (
+          <CardCity
+            toggle={toggle}
+            code={newyork.current.condition.code}
+            hour={newyork.location.localtime}
+            temp={newyork.current.temp_c}
+            name={newyork.location.name}
+          />
+        ) : (
+          ''
+        )}
 
-        {/* <CardCity
-          toggle={toggle}
-          code={paris.current.condition.code}
-          hour={paris.location.localtime}
-          temp={paris.current.temp_c}
-          name={paris.location.name}
-        /> */}
         {/* <CardCity
           toggle={toggle}
           code={london.current.condition.code}
