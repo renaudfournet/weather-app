@@ -47,7 +47,7 @@ export default function App(
     console.log('Longitude is:', long)
     console.log('DATA:', data)
     fetchData()
-  }, [lat, long])
+  }, [lat, long, data])
 
   if (!paris || !london || !vancouver || !sydney || !newyork || !tokyo || !data) return null
   // console.log('*****', paris)
@@ -75,10 +75,11 @@ export default function App(
       </div>
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-20 xl:mx-52 gap-4 lg:mt-10">
         <CardCity
-          name={data.location.name}
+          toggle={toggle}
           hour={data.location.localtime}
           temp={data.current.temp_c}
           code={data.current.condition.code}
+          name={data.location.name}
         />
         <CardCity
           toggle={toggle}
