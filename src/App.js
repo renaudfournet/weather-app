@@ -83,7 +83,7 @@ export default function App(
             name={data.location.name}
           />
         ) : (
-          <div></div>
+          ''
         )}
 
         {/* <CardCity

@@ -50,15 +50,13 @@ export default function Location(props) {
               <div>
                 <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
               </div>
-              <div class="flex">
+              <div class="flex items-center">
                 <FontAwesomeIcon
-                  class="text-white-100 w-10"
-                  icon={
-                    regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
-                  }
+                  class="text-white-100 icon-size"
+                  icon={regex ? codeWeather[index].icon : codeWeather[index].iconNight}
                 />
                 &nbsp;
-                <div class="flex justify-center text-4xl">
+                <div class="flex items-center  justify-center text-4xl">
                   {!props.toggle ? (
                     <div>
                       <span>{props.temp}</span>
@@ -89,15 +87,13 @@ export default function Location(props) {
             <div>
               <div class="flex uppercase whitespace-nowrap text-3xl">{props.name}</div>
             </div>
-            <div class="flex">
+            <div class="flex items-center ">
               <FontAwesomeIcon
-                class="text-white-100 w-10"
-                icon={
-                  regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
-                }
+                class="text-white-100 icon-size"
+                icon={regex ? codeWeather[index].icon : codeWeather[index].iconNight}
               />
               &nbsp;
-              <div class="flex justify-center text-4xl">
+              <div class="flex items-center  justify-center text-4xl">
                 {!props.toggle ? (
                   <div>
                     <span>{props.temp}</span>

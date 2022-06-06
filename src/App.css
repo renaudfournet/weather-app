@@ -57,6 +57,10 @@
   transform: translate3d(25%, 0, 0);
 }
 
+.icon-size {
+  width: 12%;
+}
+
 .App {
   text-align: center;
 }
