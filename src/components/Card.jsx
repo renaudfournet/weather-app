@@ -94,7 +94,9 @@ function Card({ name, fetchUrl, toggle }) {
                 </div>
               </div>
               <div onClick={onClick}>
-                <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+                <button class="bg-transparent border hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+                </button>
                 {showResults ? (
                   <div>
                     <ul>
@@ -147,7 +149,9 @@ function Card({ name, fetchUrl, toggle }) {
               </div>
             </div>
             <div onClick={onClick}>
-              <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+              <button class="bg-transparent border hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+              </button>
               {showResults ? (
                 <div>
                   <ul>

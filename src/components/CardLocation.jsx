@@ -82,7 +82,9 @@ export default function CardLocation(props) {
               </div>
 
               <div onClick={onClick}>
-                <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+                <button class="bg-transparent border hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+                </button>
                 {showResults ? (
                   <div>
                     <ul>
@@ -138,7 +140,9 @@ export default function CardLocation(props) {
               </div>
             </div>
             <div onClick={onClick}>
-              <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+              <button class="bg-transparent border hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+              </button>
               {showResults ? (
                 <div>
                   <ul>
