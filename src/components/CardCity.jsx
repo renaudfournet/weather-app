@@ -1,8 +1,11 @@
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import codeWeather from './codeWeather'
 
 export default function CardCity(props) {
+  const [showResults, setShowResults] = React.useState(false)
+
   // get index for code weather
   let index = codeWeather.findIndex(item => item.code === props.code)
 
@@ -40,20 +43,22 @@ export default function CardCity(props) {
 
   let day = date.slice(8, 10)
 
+  const onClick = () => setShowResults(!showResults)
+
   return (
     <>
       {regex < 21 && regex > 6 ? (
         <div>
-          <div class="flex relative items-center justify-between w-full h-44 rounded-lg text-white-100 bg-primary-100">
+          <div class="flex relative justify-between w-full min-h-min rounded-lg text-white-100 bg-primary-100 pt-5 pb-5">
             <div class="ml-8 flex flex-col">
               <div>
-                <div class="flex uppercase whitespace-nowrap text-1xl xs:text-2xl sm:text-3xl md:text-3xl">
+                <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
                   {props.name}
                 </div>
               </div>
-              <div class="flex">
+              <div class="flex items-center">
                 <FontAwesomeIcon
-                  class="text-white-100 w-10"
+                  class="text-white-100 w-11"
                   icon={
                     regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
                   }
@@ -85,16 +90,16 @@ export default function CardCity(props) {
           </div>
         </div>
       ) : (
-        <div class="flex items-center justify-between w-full h-44 rounded-lg text-white-100 bg-secondary-100">
+        <div class="flex justify-between w-full min-h-min rounded-lg text-white-100 bg-secondary-100 pt-5 pb-5">
           <div class="ml-8 flex flex-col">
             <div>
-              <div class="flex uppercase whitespace-nowrap text-1xl xs:text-2xl sm:text-3xl md:text-3xl">
+              <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
                 {props.name}
               </div>
             </div>
-            <div class="flex">
+            <div class="flex items-center">
               <FontAwesomeIcon
-                class="text-white-100 w-10"
+                class="text-white-100 w-11"
                 icon={
                   regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
                 }

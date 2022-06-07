@@ -1,9 +1,10 @@
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightLong, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import codeWeather from './codeWeather'
 
 export default function Location(props) {
+  const [showResults, setShowResults] = React.useState(false)
   console.log('props', props)
   // get index for code weather
   let index = codeWeather.findIndex(item => item.code === props.code)
@@ -42,14 +43,15 @@ export default function Location(props) {
 
   let day = date.slice(8, 10)
 
+  const onClick = () => setShowResults(!showResults)
   return (
     <>
       {regex < 21 && regex > 6 ? (
         <div>
-          <div class="flex relative items-center justify-between w-full h-44 rounded-lg text-white-100 bg-primary-100">
+          <div class="flex relative justify-between w-full min-h-min rounded-lg text-white-100 bg-primary-100 pt-5 pb-5">
             <div class="ml-8 flex flex-col">
               <div>
-                <div class="flex uppercase whitespace-nowrap text-1xl xs:text-2xl sm:text-3xl md:text-3xl">
+                <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
                   <div>
                     <FontAwesomeIcon className="text-2xl" icon={faLocationDot} />
                   </div>
@@ -58,11 +60,13 @@ export default function Location(props) {
               </div>
               <div class="flex items-center">
                 <FontAwesomeIcon
-                  class="text-white-100 w-10"
-                  icon={regex ? codeWeather[index].icon : codeWeather[index].iconNight}
+                  class="text-white-100 w-11"
+                  icon={
+                    regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
+                  }
                 />
                 &nbsp;
-                <div class="flex items-center  justify-center text-4xl">
+                <div class="flex justify-center text-4xl">
                   {!props.toggle ? (
                     <div>
                       <span>{props.temp}</span>
@@ -88,20 +92,22 @@ export default function Location(props) {
           </div>
         </div>
       ) : (
-        <div class="flex items-center justify-between w-full h-44 rounded-lg text-white-100 bg-secondary-100">
+        <div class="flex justify-between w-full min-h-min rounded-lg text-white-100 bg-secondary-100 pt-5 pb-5">
           <div class="ml-8 flex flex-col">
             <div>
-              <div class="flex uppercase whitespace-nowrap text-1xl xs:text-2xl sm:text-3xl md:text-3xl">
+              <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
                 <div>
                   <FontAwesomeIcon className="text-2xl" icon={faLocationDot} />
                 </div>
                 &nbsp;<span>{props.name}</span>
               </div>
             </div>
-            <div class="flex items-center ">
+            <div class="flex items-center">
               <FontAwesomeIcon
-                class="text-white-100 w-10"
-                icon={regex ? codeWeather[index].icon : codeWeather[index].iconNight}
+                class="text-white-100 w-11"
+                icon={
+                  regex < 21 && regex > 6 ? codeWeather[index].icon : codeWeather[index].iconNight
+                }
               />
               &nbsp;
               <div class="flex items-center  justify-center text-4xl">

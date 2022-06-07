@@ -4,18 +4,18 @@ import 'dotenv/config'
 
 const API_Key = process.env.REACT_APP_API_Key
 
-export const GetIP = () => {
-  const IP = 'https://geolocation-db.com/json/'
-  const [ip, setIP] = React.useState(null)
-  // const baseURLIP = `http://api.weatherapi.com/v1/ip.json?key=${API_Key}&q=${ip.IPv4}`
-  // const [location, setLocation] = React.useState(null)
-  React.useEffect(() => {
-    axios.get(IP).then(response => {
-      setIP(response.data)
-    })
-  }, [])
-  return ip
-}
+// export const GetIP = () => {
+//   const IP = 'https://geolocation-db.com/json/'
+//   const [ip, setIP] = React.useState(null)
+//   // const baseURLIP = `http://api.weatherapi.com/v1/ip.json?key=${API_Key}&q=${ip.IPv4}`
+//   // const [location, setLocation] = React.useState(null)
+//   React.useEffect(() => {
+//     axios.get(IP).then(response => {
+//       setIP(response.data)
+//     })
+//   }, [])
+//   return ip
+// }
 
 // export const GetLocation = ({ ip }) => {
 //   const baseURLLocation = `https://api.weatherapi.com/v1/ip.json?key=${API_Key}&q=${GetIP(
