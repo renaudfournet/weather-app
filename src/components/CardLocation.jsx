@@ -87,7 +87,7 @@ export default function CardLocation(props) {
                   <div>
                     <ul>
                       <li>Humidity : {props.hum} %</li>
-                      <li>Wind : {props.wind} </li>
+                      <li>Wind : {props.wind} km/h</li>
                       <li>Précipitations : {props.prec} mm</li>
                     </ul>
                   </div>
@@ -143,7 +143,7 @@ export default function CardLocation(props) {
                 <div>
                   <ul>
                     <li>Humidity : {props.hum} %</li>
-                    <li>Wind : {props.wind} </li>
+                    <li>Wind : {props.wind} km/h</li>
                     <li>Précipitations : {props.prec} mm</li>
                   </ul>
                 </div>
