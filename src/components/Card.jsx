@@ -1,21 +1,21 @@
-import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
+import axios from './../api/axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import codeWeather from './codeWeather'
+import codeWeather from '../codeWeather'
 
-export default function CardCity(props) {
-  const [showResults, setShowResults] = React.useState(false)
+function Card({ name, fetchUrl, toggle }) {
+  const [city, setCity] = React.useState()
 
-  // get index for code weather
-  let index = codeWeather.findIndex(item => item.code === props.code)
-
-  // isolate hour number
-  let currentHour = props.hour.split('')[11] + props.hour.split('')[12]
-  const regex = currentHour.replace(':', '')
-
-  // get time and date
-  let date = props.hour.slice(0, 11)
-  let time = props.hour.slice(11)
+  React.useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(fetchUrl)
+      console.log(request)
+      setCity(request.data)
+      return request
+    }
+    fetchData()
+  }, [fetchUrl])
+  console.log('*******', city)
 
   // get month
   const months = [
@@ -33,6 +33,19 @@ export default function CardCity(props) {
     'décembre'
   ]
 
+  if (!city) return null
+
+  // get index for code weather
+  let index = codeWeather.findIndex(item => item.code === city.current.condition.code)
+
+  // isolate hour number
+  let currentHour = city.location.localtime.split('')[11] + city.location.localtime.split('')[12]
+  const regex = currentHour.replace(':', '')
+
+  // get time and date
+  let date = city.location.localtime.slice(0, 11)
+  let time = city.location.localtime.slice(11)
+
   let month = months[parseInt(date.slice(5, 7)) - 1]
 
   // get year
@@ -43,8 +56,6 @@ export default function CardCity(props) {
 
   let day = date.slice(8, 10)
 
-  const onClick = () => setShowResults(!showResults)
-
   return (
     <>
       {regex < 21 && regex > 6 ? (
@@ -53,7 +64,7 @@ export default function CardCity(props) {
             <div class="ml-8 flex flex-col">
               <div>
                 <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
-                  {props.name}
+                  {city.location.name}
                 </div>
               </div>
               <div class="flex items-center">
@@ -65,14 +76,14 @@ export default function CardCity(props) {
                 />
                 &nbsp;
                 <div class="flex justify-center text-4xl">
-                  {!props.toggle ? (
+                  {!toggle ? (
                     <div>
-                      <span>{props.temp}</span>
+                      <span>{city.current.temp_c}</span>
                       <span>°C</span>
                     </div>
                   ) : (
                     <div>
-                      <span>{(props.temp * 1.8 + 32).toFixed()}</span>
+                      <span>{(city.current.temp_c * 1.8 + 32).toFixed()}</span>
                       <span>°F</span>
                     </div>
                   )}
@@ -94,7 +105,7 @@ export default function CardCity(props) {
           <div class="ml-8 flex flex-col">
             <div>
               <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
-                {props.name}
+                {city.location.name}
               </div>
             </div>
             <div class="flex items-center">
@@ -106,14 +117,14 @@ export default function CardCity(props) {
               />
               &nbsp;
               <div class="flex justify-center text-4xl">
-                {!props.toggle ? (
+                {!toggle ? (
                   <div>
-                    <span>{props.temp}</span>
+                    <span>{city.current.temp_c}</span>
                     <span>°C</span>
                   </div>
                 ) : (
                   <div>
-                    <span>{(props.temp * 1.8 + 32).toFixed()}</span>
+                    <span>{(city.current.temp_c * 1.8 + 32).toFixed()}</span>
                     <span>°F</span>
                   </div>
                 )}
@@ -133,3 +144,5 @@ export default function CardCity(props) {
     </>
   )
 }
+
+export default Card
