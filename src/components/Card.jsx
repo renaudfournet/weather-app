@@ -2,9 +2,13 @@ import axios from './../api/axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import codeWeather from '../codeWeather'
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons'
 
 function Card({ name, fetchUrl, toggle }) {
   const [city, setCity] = React.useState()
+  const [showResults, setShowResults] = React.useState(false)
+
+  const onClick = () => setShowResults(!showResults)
 
   React.useEffect(() => {
     async function fetchData() {
@@ -15,7 +19,7 @@ function Card({ name, fetchUrl, toggle }) {
     }
     fetchData()
   }, [fetchUrl])
-  console.log('*******', city)
+  console.log('CITY', city)
 
   // get month
   const months = [
@@ -60,7 +64,7 @@ function Card({ name, fetchUrl, toggle }) {
     <>
       {regex < 21 && regex > 6 ? (
         <div>
-          <div class="flex relative justify-between w-full min-h-min rounded-lg text-white-100 bg-primary-100 pt-5 pb-5">
+          <div class="flex relative justify-between w-full h-fit rounded-lg text-white-100 bg-primary-100 pt-5 pb-5">
             <div class="ml-8 flex flex-col">
               <div>
                 <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
@@ -89,6 +93,18 @@ function Card({ name, fetchUrl, toggle }) {
                   )}
                 </div>
               </div>
+              <div onClick={onClick}>
+                <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+                {showResults ? (
+                  <div>
+                    <ul>
+                      <li>Humidity : {city.current.humidity} %</li>
+                      <li>Wind : {city.current.wind_kph} km/h</li>
+                      <li>Précipitations : {city.current.precip_mm} mm</li>
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
             </div>
             <div class="mr-8">
               <div class="flex flex-col justify-center">
@@ -101,7 +117,7 @@ function Card({ name, fetchUrl, toggle }) {
           </div>
         </div>
       ) : (
-        <div class="flex justify-between w-full min-h-min rounded-lg text-white-100 bg-secondary-100 pt-5 pb-5">
+        <div class="flex justify-between w-full h-fit rounded-lg text-white-100 bg-secondary-100 pt-5 pb-5">
           <div class="ml-8 flex flex-col">
             <div>
               <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
@@ -129,6 +145,18 @@ function Card({ name, fetchUrl, toggle }) {
                   </div>
                 )}
               </div>
+            </div>
+            <div onClick={onClick}>
+              <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+              {showResults ? (
+                <div>
+                  <ul>
+                    <li>Humidity : {city.current.humidity} %</li>
+                    <li>Wind : {city.current.wind_kph} km/h</li>
+                    <li>Précipitations : {city.current.precip_mm} mm</li>
+                  </ul>
+                </div>
+              ) : null}
             </div>
           </div>
           <div class="mr-8 ">

@@ -4,20 +4,10 @@ import './App.css'
 import Card from './components/Card'
 import requests from './api/requests'
 import CardLocation from './components/CardLocation'
-import { css } from '@emotion/react'
-import { ClipLoader } from 'react-spinners'
 
 const API_Key = process.env.REACT_APP_API_Key
 
 export default function App() {
-  const override = css`
-    display: block;
-    margin: 0 auto;
-    border-color: blue;
-  `
-
-  let [loading, setLoading] = React.useState(true)
-  let [color, setColor] = React.useState('')
   const [toggle, setToggle] = React.useState(false)
 
   const [lat, setLat] = React.useState([])
@@ -67,6 +57,9 @@ export default function App() {
         {typeof data.current != 'undefined' ? (
           <CardLocation
             toggle={toggle}
+            wind={data.current.wind_kph}
+            prec={data.current.precip_mm}
+            hum={data.current.humidity}
             code={data.current.condition.code}
             hour={data.location.localtime}
             temp={data.current.temp_c}

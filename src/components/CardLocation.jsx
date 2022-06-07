@@ -1,11 +1,12 @@
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightLong, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import codeWeather from './../codeWeather'
 
 export default function CardLocation(props) {
   const [showResults, setShowResults] = React.useState(false)
-  console.log('props', props)
+  const onClick = () => setShowResults(!showResults)
+  // console.log('props', props)
   // get index for code weather
   let index = codeWeather.findIndex(item => item.code === props.code)
 
@@ -43,12 +44,11 @@ export default function CardLocation(props) {
 
   let day = date.slice(8, 10)
 
-  const onClick = () => setShowResults(!showResults)
   return (
     <>
       {regex < 21 && regex > 6 ? (
         <div>
-          <div class="flex relative justify-between w-full min-h-min rounded-lg text-white-100 bg-primary-100 pt-5 pb-5">
+          <div class="flex relative justify-between w-full h-fit rounded-lg text-white-100 bg-primary-100 pt-5 pb-5">
             <div class="ml-8 flex flex-col">
               <div>
                 <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
@@ -80,6 +80,19 @@ export default function CardLocation(props) {
                   )}
                 </div>
               </div>
+
+              <div onClick={onClick}>
+                <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+                {showResults ? (
+                  <div>
+                    <ul>
+                      <li>Humidity : {props.hum} %</li>
+                      <li>Wind : {props.wind} </li>
+                      <li>Précipitations : {props.prec} mm</li>
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
             </div>
             <div class="mr-8">
               <div class="flex flex-col justify-center">
@@ -92,7 +105,7 @@ export default function CardLocation(props) {
           </div>
         </div>
       ) : (
-        <div class="flex justify-between w-full min-h-min rounded-lg text-white-100 bg-secondary-100 pt-5 pb-5">
+        <div class="flex justify-between w-full h-fit rounded-lg text-white-100 bg-secondary-100 pt-5 pb-5">
           <div class="ml-8 flex flex-col">
             <div>
               <div class="flex uppercase whitespace-nowrap text-1xl xs:text-1xl sm:text-1xl md:text-1xl lg:text-2xl">
@@ -123,6 +136,18 @@ export default function CardLocation(props) {
                   </div>
                 )}
               </div>
+            </div>
+            <div onClick={onClick}>
+              <span>Détails</span> <FontAwesomeIcon icon={faArrowRightLong} />
+              {showResults ? (
+                <div>
+                  <ul>
+                    <li>Humidity : {props.hum} %</li>
+                    <li>Wind : {props.wind} </li>
+                    <li>Précipitations : {props.prec} mm</li>
+                  </ul>
+                </div>
+              ) : null}
             </div>
           </div>
           <div class="mr-8 ">
