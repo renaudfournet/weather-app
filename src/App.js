@@ -5,6 +5,8 @@ import Card from './components/Card'
 import requests from './api/requests'
 import CardLocation from './components/CardLocation'
 import { logo } from './images'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons'
 
 const API_Key = process.env.REACT_APP_API_Key
 
@@ -64,7 +66,13 @@ export default function App() {
                         aria-haspopup="true"
                       >
                         Settings&nbsp;
-                        <div>arrow</div>
+                        <div>
+                          {show ? (
+                            <FontAwesomeIcon icon={faArrowUpLong} />
+                          ) : (
+                            <FontAwesomeIcon icon={faArrowDownLong} />
+                          )}
+                        </div>
                       </button>
                     </div>
                     {show ? (
