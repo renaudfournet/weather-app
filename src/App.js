@@ -4,11 +4,13 @@ import './App.css'
 import Card from './components/Card'
 import requests from './api/requests'
 import CardLocation from './components/CardLocation'
+import { logo } from './images'
 
 const API_Key = process.env.REACT_APP_API_Key
 
 export default function App() {
   const [toggle, setToggle] = React.useState(false)
+  const [show, setShow] = React.useState(false)
 
   const [lat, setLat] = React.useState([])
   const [long, setLong] = React.useState([])
@@ -35,24 +37,84 @@ export default function App() {
     toggle ? setToggle(false) : setToggle(true)
   }
 
+  const showSettings = () => {
+    show ? setShow(false) : setShow(true)
+  }
+
   return (
     <>
-      <div class="flex justify-end mt-2 mx-2">
-        <div class="flex">
-          <div class="label-text text-2xl">°C&nbsp;</div>
-          <label class="label">
-            <div onChange={toggler} class="toggle">
-              <input class="toggle-state" type="checkbox" name="check" value="check" />
+      <nav class="bg-whitesmoke-100 border-gray-200 rounded dark:bg-gray-800">
+        <div class="container flex flex-wrap justify-between items-center">
+          <div class="flex items-center">
+            <img src={logo} class="w-32 h-32 " alt="Weather Logo" />
+          </div>
 
-              <div class="toggle-inner">
-                <div class="indicator"></div>
-              </div>
-              <div class="active-bg"></div>
-            </div>
-          </label>
-          <div class="label-text text-2xl">&nbsp;°F</div>
+          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+            <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+              <li>
+                <div class="flex justify-end text-black-100">
+                  <div class="relative inline-block text-left">
+                    <div>
+                      <button
+                        onClick={showSettings}
+                        type="button"
+                        class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 "
+                        id="menu-button"
+                        aria-expanded="true"
+                        aria-haspopup="true"
+                      >
+                        Settings&nbsp;
+                        <div>arrow</div>
+                      </button>
+                    </div>
+                    {show ? (
+                      <div
+                        class="z-50 origin-top-right bg-whitesmoke-100 absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="menu-button"
+                        tabindex="-1"
+                      >
+                        <div class="py-1" role="none">
+                          <div
+                            class="text-gray-700 px-2 py-2 flex flex-col"
+                            role="menuitem"
+                            tabindex="-1"
+                            id="menu-item-0"
+                          >
+                            <div class="flex">
+                              <div class="label-text text-2xl">°C&nbsp;</div>
+                              <label class="label">
+                                <div onChange={toggler} class="toggle">
+                                  <input
+                                    class="toggle-state"
+                                    type="checkbox"
+                                    name="check"
+                                    value="check"
+                                  />
+
+                                  <div class="toggle-inner">
+                                    <div class="indicator"></div>
+                                  </div>
+                                  <div class="active-bg"></div>
+                                </div>
+                              </label>
+                              <div class="label-text text-2xl">&nbsp;°F</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      ''
+                    )}
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </nav>
+
       <div class="grid h-max grid-cols-1 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 m-5 xs:mx-2 md:mx-5 lg:mx-5 xl:mx-10 gap-4 lg:mt-10">
         {typeof data.current != 'undefined' ? (
           <CardLocation
