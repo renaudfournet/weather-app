@@ -46,12 +46,12 @@ export default function App() {
   return (
     <>
       <nav class="bg-whitesmoke-100 border-gray-200 rounded dark:bg-gray-800">
-        <div class="container flex flex-wrap justify-between items-center">
-          <div class="flex items-center">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center px-2">
             <img src={logo} class="w-32 h-32 " alt="Weather Logo" />
           </div>
 
-          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <div class=" w-full md:block md:w-auto px-4">
             <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
               <li>
                 <div class="flex justify-end text-black-100">
@@ -62,8 +62,6 @@ export default function App() {
                         type="button"
                         class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 "
                         id="menu-button"
-                        aria-expanded="true"
-                        aria-haspopup="true"
                       >
                         Settings&nbsp;
                         <div>
