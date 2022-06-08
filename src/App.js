@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <>
-      <nav class="bg-whitesmoke-100 border-gray-200 rounded dark:bg-gray-800">
+      <nav class="z-50 sticky top-0 bg-whitesmoke-100 border-gray-200 rounded dark:bg-gray-800">
         <div class="flex justify-between items-center">
           <div class="flex items-center px-2">
             <img src={logo} class="w-32 h-32 " alt="Weather Logo" />
