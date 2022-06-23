@@ -2,12 +2,7 @@ import axios from './../api/axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import codeWeather from '../codeWeather'
-import {
-  faArrowDownLong,
-  faArrowRightLong,
-  faArrowUp,
-  faArrowUpLong
-} from '@fortawesome/free-solid-svg-icons'
+import { faArrowDownLong, faArrowUpLong } from '@fortawesome/free-solid-svg-icons'
 
 function Card({ name, fetchUrl, toggle }) {
   const [city, setCity] = React.useState()
